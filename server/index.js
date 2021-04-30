@@ -13,14 +13,13 @@ app.get('/api', (req, res) => {
 })
 
 if (process.env.NODE_ENV === 'production') {
-  app.use('/assets', express.static(path.join(path.resolve(), '/client/assets')))
-  app.use('/assets', express.static(path.join(path.resolve(), '/client/public')))
+  app.use('/', express.static(path.join(path.resolve(), '/client/public')))
   app.get('/', (req, res) =>
     res.sendFile(path.resolve(path.resolve(), 'client', 'public', 'index.html'))
   )
 }
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 4000
 
 app.listen(
   PORT,

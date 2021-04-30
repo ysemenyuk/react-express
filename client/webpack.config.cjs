@@ -6,24 +6,22 @@ const mode = process.env.NODE_ENV || 'development';
 
 module.exports = {
   mode,
-  // devtool: true,
-  // entry: './src/index.js',
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   output: {
     filename: 'main.js',
     path: path.join(__dirname, 'public'),
-    // publicPath: '/assets/',
+    // publicPath: '/assets',
   },
   devServer: {
     compress: true,
     port: 3000,
     host: 'localhost',
-    // publicPath: '/assets/',
+    // publicPath: '/assets',
     proxy: {
       context: () => true,
-      target: 'http://localhost:5000',
+      target: 'http://localhost:4000',
     },
     historyApiFallback: true,
   },
