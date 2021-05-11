@@ -12,16 +12,19 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.join(__dirname, 'public'),
-    // publicPath: '/assets',
+    clean: true,
+    publicPath: '/public/',
   },
   devServer: {
     compress: true,
+    hot: true,
     port: 3000,
     host: 'localhost',
-    // publicPath: '/assets',
+    contentBase: path.join(__dirname, 'public'),
+    publicPath: '/public/',
     proxy: {
-      context: () => true,
-      target: 'http://localhost:4000',
+      context: ['/auth', '/api'],
+      target: 'http://localhost:5000',
     },
     historyApiFallback: true,
   },

@@ -1,14 +1,29 @@
 import React from 'react';
-import axios from 'axios';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 
-const App = () => {
+import Navbar from './components/Navbar.jsx';
 
-  axios.get('/api')
-    .then(resp => console.log(123, resp));
+import LoginPage from './pages/LoginPage.jsx';
+import SignupPage from './pages/SignupPage.jsx';
 
+function App() {
+  console.log('App');
   return (
-    <div className="App">
-      App
+    <div className='container'>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path='/login/login' component={LoginPage} />
+          <Route path='/login' component={LoginPage} />
+          <Route path='/signup' component={SignupPage} />
+          <Redirect to='/' />
+        </Switch>
+      </Router>
     </div>
   );
 }
